@@ -25,14 +25,10 @@ services:
   
   # We need install some extension for php -> so we move image to Dockerfile
   php:
-    image: devilbox/php-fpm:7.4-slim-0.151
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: php
-    # set working dir for php -> if you change this option, you will change all value /var/www/html
-    working_dir: /var/www/html
-    volumes:
-      - ./workspace:/var/www/html
-    ports:
-      - "9000:9000"
     networks:
       - php-nginx-mysql-network
   
@@ -47,7 +43,7 @@ services:
       - ./mysql:/var/lib/mysql
     networks:
       - php-nginx-mysql-network
-    
+
   # Run production for SSL (HTTPS for server)
   # certbot:
   #   depends_on:
@@ -62,7 +58,6 @@ services:
   #   command: certonly --webroot --webroot-path=/var/www/html --email $CERTBOT_EMAIL --agree-tos --no-eff-email --staging -d $CERTBOT_DOMAIN -d www.$CERTBOT_DOMAIN
   #   networks:
   #     - php-nginx-mysql-network
-
 networks:
   # name network
   php-nginx-mysql-network:

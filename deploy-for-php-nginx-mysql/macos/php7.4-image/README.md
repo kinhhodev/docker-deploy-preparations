@@ -16,7 +16,7 @@
 
 # PHP Packages Available:
 | Package | Available |
-|-------------|------------------------------------|
+|-------------|--------|
 | amqp | ✅ |
 | apcu | ✅ |
 | bcmath | ✅ |
