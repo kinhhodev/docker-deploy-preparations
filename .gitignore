@@ -4,6 +4,8 @@ deploy-for-php-nginx-mysql/macos/php7.4-image/certbot/*
 !deploy-for-php-nginx-mysql/macos/php7.4-image/certbot/.gitkeep
 
 deploy-for-php-nginx-mysql/macos/php7.4-dockerfile/mysql/*
+!deploy-for-php-nginx-mysql/macos/php7.4-dockerfile/mysql/.gitkeep
 deploy-for-php-nginx-mysql/macos/php7.4-dockerfile/certbot/*
+!deploy-for-php-nginx-mysql/macos/php7.4-dockerfile/certbot/.gitkeep
 
 deploy-for-php-nginx-mysql/certbot/*
