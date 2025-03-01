@@ -1,0 +1,69 @@
+# version PHP 7.4
+
+version: '3'
+services:
+  web_server:
+    image: nginx:latest
+    container_name: web_server
+    env_file: .env
+    ports:
+      - 80:80
+    volumes:
+      # mapping folder source in local to folder /var/www/html in container
+      - ./workspace:/var/www/html
+      # logs for nginx
+      - ./nginx/logs/access.log:/var/log/nginx/access.log
+      - ./nginx/logs/error.log:/var/log/nginx/error.log
+      # mapping folder config in local to folder /etc/nginx/nginx.conf in container
+      - ./nginx/conf.d/default.conf.template:/etc/nginx/conf.d/default.conf.template
+      - ./nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf
+      # - ./certbot:/etc/letsencrypt # Certbot command
+    depends_on:
+      - php
+    networks:
+      - php-nginx-mysql-network
+  
+  # We need install some extension for php -> so we move image to Dockerfile
+  php:
+    image: devilbox/php-fpm:8.0-slim-0.151
+    container_name: php
+    # set working dir for php -> if you change this option, you will change all value /var/www/html
+    working_dir: /var/www/html
+    volumes:
+      - ./workspace:/var/www/html
+    ports:
+      - "9000:9000"
+    networks:
+      - php-nginx-mysql-network
+  
+  db:
+    image: mysql:latest
+    container_name: db
+    env_file:
+      - .env
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mysql:/var/lib/mysql
+    networks:
+      - php-nginx-mysql-network
+    
+  # Run production for SSL (HTTPS for server)
+  # certbot:
+  #   depends_on:
+  #     - web_server
+  #   image: certbot/certbot
+  #   env_file:
+  #     - .env
+  #   container_name: certbot
+  #   volumes:
+  #     - ./certbot:/etc/letsencrypt
+  #     - ./workspace:/var/www/html
+  #   command: certonly --webroot --webroot-path=/var/www/html --force-renewal --email $CERTBOT_EMAIL --agree-tos --no-eff-email --staging -d $NGINX_SERVER_NAME -d www.$NGINX_SERVER_NAME
+  #   networks:
+  #     - php-nginx-mysql-network
+
+networks:
+  # name network
+  php-nginx-mysql-network:
+    driver: bridge

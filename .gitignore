@@ -8,4 +8,18 @@ deploy-for-php-nginx-mysql/macos/php7.4-dockerfile/mysql/*
 deploy-for-php-nginx-mysql/macos/php7.4-dockerfile/certbot/*
 !deploy-for-php-nginx-mysql/macos/php7.4-dockerfile/certbot/.gitkeep
 
+deploy-for-php-nginx-mysql/macos/php8.0-image/mysql/*
+!deploy-for-php-nginx-mysql/macos/php8.0-image/mysql/.gitkeep
+deploy-for-php-nginx-mysql/macos/php8.0-image/certbot/*
+!deploy-for-php-nginx-mysql/macos/php8.0-image/certbot/.gitkeep
+
+deploy-for-php-nginx-mysql/macos/php8.0-dockerfile/mysql/*
+!deploy-for-php-nginx-mysql/macos/php8.0-dockerfile/mysql/.gitkeep
+deploy-for-php-nginx-mysql/macos/php8.0-dockerfile/certbot/*
+!deploy-for-php-nginx-mysql/macos/php8.0-dockerfile/certbot/.gitkeep
+
+
+deploy-for-php-nginx-mysql/linux/*
+
+
 deploy-for-php-nginx-mysql/certbot/*
