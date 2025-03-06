@@ -4,6 +4,13 @@ deploy-for-php-nginx-mysql/macos/*/certbot/*
 !deploy-for-php-nginx-mysql/macos/*/certbot/.gitkeep
 
 deploy-for-php-nginx-mysql/linux/*
+deploy-for-php-nginx-mysql/window/*
 
+deploy-for-wordpress-nginx-mysql/macos/*/mysql/*
+!deploy-for-wordpress-nginx-mysql/macos/*/mysql/.gitkeep
+deploy-for-wordpress-nginx-mysql/macos/*/certbot/*
+!deploy-for-wordpress-nginx-mysql/macos/*/certbot/.gitkeep
+deploy-for-wordpress-nginx-mysql/macos/*/wordpress/*
+!deploy-for-wordpress-nginx-mysql/macos/*/wordpress/.gitkeep
 
 deploy-for-php-nginx-mysql/certbot/*
